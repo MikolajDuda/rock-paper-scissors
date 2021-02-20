@@ -69,10 +69,12 @@ function playRound(){
     if (playerWins === 5) {
         endResultPara.textContent = 'PLAYER WON';
         resultsContainer.appendChild(endResultPara);
+        restartButton.style.display = 'inline-block';
         resultsContainer.appendChild(restartButton);
     } else if (computerWins === 5){
         endResultPara.textContent = 'COMPUTER WON';
         resultsContainer.appendChild(endResultPara);
+        restartButton.style.display = 'inline-block';
         resultsContainer.appendChild(restartButton);
     }
 }
