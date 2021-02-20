@@ -2,74 +2,26 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Rock paper scissors game</title>
+        <title>THE GAME</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel=icon type="image/png" href="favicon.png">
     </head>
     <body>
-        <h1>The game works only in console now.</h1>
-        <h2>Please open console with F12 key to play.</h2>
-        <script>
-            function random(min, max){
-                return Math.floor(Math.random() * (max - min + 1) + min);
-            }
+        <div id="main-container">
+            <h1 id="title">THE GAME</h1>
+            <div id="btn-container">
+                <button id="rock" class="btn">Rock</button>
+                <button id="paper" class="btn">Paper</button>
+                <button id="scissors" class="btn">Scissors</button>
+            </div>
+            <div id="results-container">
+                <p class="results">ROUND RESULT:</p>
+                <p id="result">-</p>
+                <p class="results">RESULT:</p>
+                <p id="round-result">-</p>
+            </div>
+        </div>
 
-            function capitalize(text){
-                text = text.trim();
-                return text.charAt(0).toUpperCase() + text.slice(1);
-            }
-
-            function computerPlay (){
-                let moves = ['rock', 'paper', 'scissors'];
-                return moves[random(0, 2)];
-            }
-
-            function getRoundResult(playerSelection, computerSelection){
-                if (playerSelection === null) {
-                    return 'You must enter either "Rock" or "Paper" or "Scissors" if you want to play!';
-                }
-                playerSelection = playerSelection.trim().toLowerCase();
-                computerSelection = computerSelection.toLowerCase();
-
-                if (!(playerSelection === 'rock' || playerSelection === 'scissors' || playerSelection === 'paper')){
-                    return 'You must enter either "Rock" or "Paper" or "Scissors" if you want to play!';
-                }
-
-                const rockBeatsScissors = (playerSelection === 'scissors' && computerSelection === 'rock');
-                const paperBeatsRock = (playerSelection === 'rock' && computerSelection ==='paper');
-                const scissorsBeatPaper = (playerSelection === 'paper' && computerSelection === 'scissors');
-
-                if (scissorsBeatPaper || paperBeatsRock || rockBeatsScissors){
-                    computerWins += 1;
-                    return `You lose the round! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}.`;
-                } else if (playerSelection === computerSelection) {
-                    return `It was a tie! ${capitalize(playerSelection)} can't beat another ${capitalize(computerSelection)}.`;
-                } else {
-                    playerWins += 1;
-                    return `You won the round! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}.`;
-                }
-            }
-
-            function game(){
-                let result;
-
-                for (let i = 0; i < 5; i++){
-                    const playerSelection = prompt('Enter "Rock", "Paper" or "Scissors": ', "Rock");
-                    result = getRoundResult(playerSelection, computerPlay());
-                    console.log(result);
-                }
-
-                if (playerWins > computerWins){
-                    console.log('Congratulations, You won the game!')
-                } else if (playerWins === computerWins){
-                    console.log('It was a tie game!')
-                } else {
-                    console.log('You were defeaten by Computer!')
-                }
-                console.log(`The score was: Player: ${playerWins} - Computer: ${computerWins}`)
-            }
-
-            let playerWins = 0;
-            let computerWins = 0;
-            game();
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>
