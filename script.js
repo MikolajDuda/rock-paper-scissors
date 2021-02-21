@@ -55,7 +55,8 @@ function getResult(playerSelection, computerSelection){
 function playRound(){
     if (playerWins >= 5 || computerWins >= 5) { return; }
     const playerSelection = this.id;
-    const result = getResult(playerSelection, computerPlay());
+    const computerSelection = computerPlay();
+    const result = getResult(playerSelection, computerSelection);
 
     if (result === 'computer won') { 
         computerWins++; 
@@ -63,7 +64,7 @@ function playRound(){
         playerWins++; 
     }
 
-    resultPara.textContent = result.toUpperCase();
+    resultPara.innerHTML = `${playerSelection.toUpperCase()} vs ${computerSelection.toUpperCase()} -- ${result.toUpperCase()}`;
     roundResultPara.textContent = `PLAYER      ${playerWins} - ${computerWins}      COMPUTER`;
     
     if (playerWins === 5) {
